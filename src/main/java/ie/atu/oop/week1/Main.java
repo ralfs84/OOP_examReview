@@ -1,17 +1,44 @@
 package ie.atu.oop.week1;
 
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        int counter = 1;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Workshop Name: ");
+        String WorkshopName = sc.next();
+        System.out.println("Capacity: ");
+        int capacity = sc.nextInt();
+        sc.nextLine();
+        System.out.println("How many attempts: ");
+        int attempts = sc.nextInt();
+        sc.nextLine();
+        Workshop workshop = new Workshop(WorkshopName,capacity);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.println("workshop Name: "+ workshop.getWorkshopName());
+        System.out.println("Capacity: "+workshop.getCapacity());
+
+        while (counter <= attempts  )
+        {
+
+                System.out.println("enter student ID");
+                String UserInput = sc.nextLine();
+                workshop.addStudentID(UserInput);
+
+
+            counter++;
         }
+
+        System.out.println("registered student IDs: "+ workshop.getStudentID());
+        System.out.println("total accepted registrations: " + workshop.getAcceptedRegistration());
+        System.out.println("total rejected registrations: " + workshop.getRejectedRegistration());
+        System.out.println("remaining places: " + workshop.remainingPlaces() );
+
     }
+
 }
